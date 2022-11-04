@@ -1,0 +1,371 @@
+
+{% extends "base.html" %}
+{% block body %}
+
+<!--navigation-->
+{% include "nav.html" %}
+
+<!--hero header-->
+<section class="py-7 py-md-0 bg-hero" id="home">
+    <div class="container">
+        <div class="row vh-md-100">
+            <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
+                {% if user.is_authenticated %}
+                
+                <h1 class="heading-black text-capitalize">Welcome, {{user}}</h1>
+                {% else %}
+                <h1 class="heading-black text-capitalize">Welcome, User</h1>
+                {% endif %}
+                <h1 class="heading-black text-capitalize">Meet Brainwave AI</h1>
+                <p class="lead py-3">Your personal assistant for creating high-quality content.</p>
+                <button onclick="location.href='#items';" value class="btn btn-primary d-inline-flex flex-row align-items-center">
+                    Get started now
+                    <em class="ml-2" data-feather="arrow-right"></em>
+                </button>
+                {% if user.is_authenticated %}
+                <button onclick="location.href='/logout';" class="btn btn-primary d-inline-flex flex-row align-items-center">
+                    Logout
+                    <em class="ml-2" data-feather="arrow-right"></em>
+                {% else %}
+                <button onclick="location.href='/login';" href="/login" class="btn btn-primary d-inline-flex flex-row align-items-center">
+                    Login
+                    <em class="ml-2" data-feather="arrow-right"></em>    
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- features section -->
+<section class="pt-6 pb-7" id="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center">
+                <h2 class="heading-black">Brainwave AI offers everything you need.</h2>
+                <p class="text-muted lead">Brainwave is the AI that will transform your content writing forever. With Brainwave, you will be able to produce high-quality, engaging,
+                     and conversions driving content on a scale that is impossible with traditional methods.</p>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-10 mx-auto">
+                <div class="row feature-boxes">
+                    <div class="col-md-6 box">
+                        <div class="icon-box box-primary">
+                            <div class="icon-box-inner">
+                                <span data-feather="edit-3" width="35" height="35"></span>
+                            </div>
+                        </div>
+                        <h5>Write faster.</h5>
+                        <p class="text-muted">Brainwave can help you write better and 
+                            faster by understanding your content and suggesting improvements.</p>
+                    </div>
+                    <div class="col-md-6 box">
+                        <div class="icon-box box-success">
+                            <div class="icon-box-inner">
+                                <span data-feather="monitor" width="35" height="35"></span>
+                            </div>
+                        </div>
+                        <h5>Stay Organized</h5>
+                        <p class="text-muted">Brainwave can help you organize your thoughts
+                             and ideas by creating outlines and mind maps</p>
+                    </div>
+                    <div class="col-md-6 box">
+                        <div class="icon-box box-danger">
+                            <div class="icon-box-inner">
+                                <span data-feather="layout" width="35" height="35"></span>
+                            </div>
+                        </div>
+                        <h5>Error Free</h5>
+                        <p class="text-muted">Brainwave can help you edit your writing by identifying errors 
+                            and suggesting corrections.</p>
+                    </div>
+                    <div class="col-md-6 box">
+                        <div class="icon-box box-info">
+                            <div class="icon-box-inner">
+                                <span data-feather="globe" width="35" height="35"></span>
+                            </div>
+                        </div>
+                        <h5>Available globally</h5>
+                        <p class="text-muted"> Brainwave can help you format your writing for different platforms and media.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-6">
+            <div class="col-md-6 mr-auto">
+                <h2>Try Brainwave's Blog Writing AI.</h2>
+                <p class="mb-5">A blog writing AI that can help you write better and faster, 
+                    With our AI, you'll get help crafting headlines, structuring your blogs,
+                      and even come up with new ideas for topics to write about.</p>
+                <a href="/blogwriter" class="btn btn-light">
+                    Try the live demo
+                </a>
+            </div>
+            <div class="col-md-5">
+                <div class="slick-about">
+                    {% load static %}
+                    <img src="{% static 'img/blog-1.jpg' %}" class="img-fluid rounded d-block mx-auto" alt="Work 1"/>
+                    <img src="{% static 'img/blog-2.jpg' %}" class="img-fluid rounded d-block mx-auto" alt="Work 2"/>
+                    <img src="{% static 'img/blog-3.jpg' %}" class="img-fluid rounded d-block mx-auto" alt="Work 3"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--pricing section-->
+<section class="py-7 bg-dark section-angle top-right bottom-right" id="items">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center">
+                <h2 class="text-white heading-black">Choose your AI.</h2>
+                <p class="text-light lead">The best free content writing AI you will find.</p>
+            </div>
+        </div>
+        <!--pricing tables-->
+        <div class="row pt-5 pricing-table">
+            <div class="col-12 mx-auto">
+                <div class="card-deck pricing-table">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title pt-3">AI Blog Writer </h3>
+                            <h2 class="card-title text-primary mb-0 pt-4">Free</h2>
+                            <div class="text-muted font-weight-medium mt-2">for this month</div>
+                            <ul class="list-unstyled pricing-list">
+                               <p>A blog writing AI that can help you write better and faster, 
+                               With our AI, you'll get help crafting headlines, structuring your b,
+                                 and even come up with new ideas for topics to write about.</p>
+                            </ul>
+                            <a href="/blogwriter" class="btn btn-primary">
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title pt-3">AI Product Description Writer</h3>
+                            <h2 class="card-title text-info mb-0 pt-4">Free</h2>
+                            <div class="text-muted font-weight-medium mt-2">for this month</div>
+                            <ul class="list-unstyled pricing-list">
+                               <p>
+                                The AI Product Writing AI is a powerful artificial intelligence that can help
+                                 you write product descriptions that are  accurate, compelling and error-free.
+                            </ul>
+                            <a href="/productdescwriter" class="btn btn-info">
+                            Get Started
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title pt-3">AI Business Name Generator</h3>
+                            <h2 class="card-title text-info mb-0 pt-4">Free</h2>
+                            <div class="text-muted font-weight-medium mt-2">for this month</div>
+                            <ul class="list-unstyled pricing-list">
+                               <p>
+                               
+
+This name generator AI will help you create unique and interesting names for your characters or businesses. 
+
+                               </p>
+                            </ul>
+                            <a href="/namegenerator" class="btn btn-info">
+                            Get Started
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title pt-3">AI Blog Topic Generator</h3>
+                            <h2 class="card-title text-info mb-0 pt-4">Free</h2>
+                            <div class="text-muted font-weight-medium mt-2">for this month</div>
+                            <ul class="list-unstyled pricing-list">
+                               <p>
+                               
+If you're looking for ideas for blog topics, look no further! 
+The Blog Topic Generator can help you come up with ideas for topics to write about. 
+
+                            </p>
+                            </ul>
+                            <a href="/blogideagenerator" class="btn btn-info">
+                            Get Started
+                            </a>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row mt-6">
+            <div class="col-md-4 mr-auto">
+                <h3>Everything is covered.</h3>
+                <p class="lead">
+                    Brainwave AI is a content writing tool that uses artificial intelligence to write content for you. It's based on the open-source GPT-3 API, which powers over 300 applications, including most of Jasper's competitors.
+                     And it's incredibly helpful, as long as you spend some time learning how it works.
+                </p>
+            </div>
+            <div class="col-md-7 offset-md-1">
+                <ul class="features-list">
+                    <li>The ability to understand the purpose or goal of the writing piece.</li>
+                    <li>The ability to determine the target audience for the writing piece.</li>
+                    <li>The ability to edit and revise the piece as needed.</li>
+                    <li>The ability to write the piece in a clear and concise manner.</li>
+                    <li>The ability to organize the ideas into a logical and cohesive structure.</li>
+                    <li>Free unlimited support</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-8 col-12 divider top-divider mx-auto pt-5 text-center">
+                <h3>Try Brainwave free for 30 days</h3>
+                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi commodo,
+                    tempus odio a, vestibulum nibh.</p>
+                <button class="btn btn-primary">
+                    Create your account
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--faq section-->
+<section class="py-7" id="faq">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center">
+                <h2>Frequently asked questions</h2>
+                <p class="text-muted lead">Answers to most common questions.</p>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-10 mx-auto">
+                <div class="row">
+                    <div class="col-md-6 mb-5">
+                        <h6>Can I try it for free?</h6>
+                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
+                    </div>
+                    <div class="col-md-6 mb-5">
+                        <h6>Do you have hidden fees?</h6>
+                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
+                    </div>
+                    <div class="col-md-6 mb-5">
+                        <h6>What are the payment methods you accept?</h6>
+                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
+                    </div>
+                    <div class="col-md-6 mb-5">
+                        <h6>How often do you release updates?</h6>
+                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
+                    </div>
+                    <div class="col-md-6 mb-5">
+                        <h6>What is your refund policy?</h6>
+                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
+                    </div>
+                    <div class="col-md-6 mb-5">
+                        <h6>How can I contact you?</h6>
+                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6 mx-auto text-center">
+                <h5 class="mb-4">Have questions?</h5>
+                <a href="/contact" class="btn btn-primary">Contact us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!--footer-->
+<footer class="py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 mr-auto">
+                <h5>About Brainwave.AI</h5>
+                <p class="text-muted">
+                    Brainwave is a free AI-powered content writing assistant. It helps you write better,
+                     faster by understanding your writing goals and providing personalized feedback and suggestions.</p>
+                <ul class="list-inline social social-sm">
+                    <li class="list-inline-item">
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href=""><i class="fa fa-google-plus"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href=""><i class="fa fa-dribbble"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+                <h5>Legal</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Refund policy</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+                <h5>Partner</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Refer a friend</a></li>
+                    <li><a href="#">Affiliates</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2">
+                <h5>Help</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Support</a></li>
+                    <li><a href="/login">Log in</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 text-muted text-center small-xl">
+                &copy; 2022 Brainwave - All Rights Reserved
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--scroll to top-->
+<div class="scroll-top">
+    <i class="fa fa-angle-up" aria-hidden="true"></i>
+</div>
+
+<!-- theme switcher (FOR DEMO ONLY - REMOVE FROM PRODUCTION)-->
+<div class="switcher-wrap">
+    <div class="switcher-trigger">
+        <span class="fa fa-gear"></span>
+    </div>
+    <div class="color-switcher">
+        <h6>Color Switcher</h6>
+        <ul class="mt-3 clearfix">
+            <li class="bg-teal active" data-color="default" title="Default Teal"></li>
+            <li class="bg-purple" data-color="purple" title="Purple"></li>
+            <li class="bg-blue" data-color="blue" title="Blue"></li>
+            <li class="bg-red" data-color="red" title="Red"></li>
+            <li class="bg-green" data-color="green" title="Green"></li>
+            <li class="bg-indigo" data-color="indigo" title="Indigo"></li>
+            <li class="bg-orange" data-color="orange" title="Orange"></li>
+            <li class="bg-cyan" data-color="cyan" title="Cyan"></li>
+            <li class="bg-yellow" data-color="yellow" title="Yellow"></li>
+            <li class="bg-pink" data-color="pink" title="Pink"></li>
+        </ul>
+        <p>These are just demo colors. You can <b>easily</b> create your own color scheme.</p>
+    </div>
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+</html>
+
+{% endblock body %}
